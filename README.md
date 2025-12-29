@@ -71,8 +71,21 @@ After deployment:
    - Save and Publish
    - **Note**: Most teams will skip this step and just use the default photographer credit
 
-### API Permissions
+### Team-Based Access Control
 
-Don't forget to set public read permissions:
+**IMPORTANT**: To restrict teams so they can only manage their own albums, see the detailed guide:
+
+📖 **[TEAM_PERMISSIONS_GUIDE.md](TEAM_PERMISSIONS_GUIDE.md)**
+
+This guide covers:
+- Creating Team Manager role with limited permissions
+- Creating user accounts for each team
+- Restricting album access to only the team's own albums
+- Custom policies and middleware (already included in this repo)
+
+### Public API Permissions
+
+For your website to display albums publicly:
+
 1. Settings → Users & Permissions Plugin → Roles → Public
 2. Enable `find` and `findOne` for both **Team** and **Album** content types

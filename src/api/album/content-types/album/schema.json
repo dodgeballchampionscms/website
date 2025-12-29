@@ -35,9 +35,14 @@
       "required": false
     },
     "photos": {
-      "type": "component",
-      "repeatable": true,
-      "component": "photo.photo-item"
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "photoMetadata": {
+      "type": "json",
+      "required": false
     }
   }
 }

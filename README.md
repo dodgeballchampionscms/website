@@ -15,13 +15,9 @@ This is the Strapi CMS for managing team photo galleries for the Dodgeball Champ
 - **team** (Relation, required): Belongs to Team
 - **eventDate** (Date, optional): Date of the event
 - **location** (String, optional): Location of the event
-- **photographerCredit** (String, optional): Default photographer credit for all photos in album
-- **photos** (Component, repeatable): Collection of photos with individual metadata
-
-### Photo Item (Component)
-- **image** (Media, required): The photo file
-- **photographerCredit** (String, optional): Individual photo credit (overrides album credit)
-- **caption** (Text, optional): Photo caption or description
+- **photographerCredit** (String, optional): Photographer credit for the entire album
+- **photos** (Media, multiple): Bulk upload photos (drag and drop multiple files)
+- **photoMetadata** (JSON, optional): Optional individual photo credits/captions stored as JSON
 
 ## Deployment
 
@@ -49,18 +45,19 @@ After deployment:
    - Go to Content Manager → Team
    - Create entries for all 8 teams
    - Publish each team
-3. **Create Albums**:
-   - Go to Content Manager → Album
-   - Create a new album, select the team it belongs to
-   - Add title, date, location, and photographer credit
-   - Click "Add component" to add photos
-   - For each photo: upload image, optionally add individual photographer credit or caption
-   - Publish the album
-4. **Bulk Upload Workflow**:
-   - Create the album with metadata
-   - Click "Add component" for each photo you want to upload
-   - Upload multiple images at once in the media library
-   - Assign photographer credits afterward if different from album default
+3. **Create Albums with Bulk Photo Upload**:
+   - Go to Content Manager → Album → Create new entry
+   - Select the team this album belongs to
+   - Add album title (required)
+   - Optionally add: event date, location, photographer credit
+   - **Bulk Upload Photos**: Click on the "photos" field and drag/drop multiple images at once
+   - Click Publish
+
+4. **Optional: Add Individual Photo Metadata** (for teams with resources):
+   - After creating the album, teams can optionally add individual credits/captions
+   - Edit the album → scroll to "photoMetadata" JSON field
+   - Add custom metadata in JSON format (we'll provide a UI for this later if needed)
+   - For most teams: just bulk upload and use the album-level photographer credit
 
 ### API Permissions
 

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_metadata_photo_credits",
+  "info": {
+    "displayName": "Photo Credit",
+    "description": "Credit for a specific photo in the album"
+  },
+  "options": {},
+  "attributes": {
+    "photoFilename": {
+      "type": "string",
+      "required": true
+    },
+    "photographerName": {
+      "type": "string",
+      "required": false
+    },
+    "caption": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

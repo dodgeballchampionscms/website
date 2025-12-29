@@ -30,7 +30,7 @@
       "type": "string",
       "required": false
     },
-    "photographerCredit": {
+    "defaultPhotographerCredit": {
       "type": "string",
       "required": false
     },
@@ -40,9 +40,10 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "photoMetadata": {
-      "type": "json",
-      "required": false
+    "photoCredits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "metadata.photo-credit"
     }
   }
 }

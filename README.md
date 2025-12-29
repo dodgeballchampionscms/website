@@ -15,9 +15,14 @@ This is the Strapi CMS for managing team photo galleries for the Dodgeball Champ
 - **team** (Relation, required): Belongs to Team
 - **eventDate** (Date, optional): Date of the event
 - **location** (String, optional): Location of the event
-- **photographerCredit** (String, optional): Photographer credit for the entire album
+- **defaultPhotographerCredit** (String, optional): Default photographer credit for all photos in album
 - **photos** (Media, multiple): Bulk upload photos (drag and drop multiple files)
-- **photoMetadata** (JSON, optional): Optional individual photo credits/captions stored as JSON
+- **photoCredits** (Component, repeatable): Optional individual photo credits that override the default
+
+### Photo Credit (Component)
+- **photoFilename** (String, required): Name of the photo file (e.g., "IMG_1234.jpg")
+- **photographerName** (String, optional): Photographer credit for this specific photo
+- **caption** (Text, optional): Caption or description for this photo
 
 ## Deployment
 
@@ -49,15 +54,22 @@ After deployment:
    - Go to Content Manager → Album → Create new entry
    - Select the team this album belongs to
    - Add album title (required)
-   - Optionally add: event date, location, photographer credit
+   - Optionally add: event date, location
+   - **Add Default Photographer Credit**: Enter photographer name (applies to all photos)
    - **Bulk Upload Photos**: Click on the "photos" field and drag/drop multiple images at once
    - Click Publish
 
-4. **Optional: Add Individual Photo Metadata** (for teams with resources):
-   - After creating the album, teams can optionally add individual credits/captions
-   - Edit the album → scroll to "photoMetadata" JSON field
-   - Add custom metadata in JSON format (we'll provide a UI for this later if needed)
-   - For most teams: just bulk upload and use the album-level photographer credit
+4. **Optional: Add Individual Photo Credits** (only if specific photos need different credits):
+   - Edit the album
+   - Scroll to "Photo Credits" section
+   - Click "+ Add component"
+   - Fill in the simple form:
+     - **Photo Filename**: Type the filename you see (e.g., "IMG_1234.jpg")
+     - **Photographer Name**: Override the default photographer for this photo
+     - **Caption**: Add an optional caption
+   - Click "+ Add component" again for each photo that needs individual credit
+   - Save and Publish
+   - **Note**: Most teams will skip this step and just use the default photographer credit
 
 ### API Permissions
 

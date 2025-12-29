@@ -8,7 +8,20 @@ This is the Strapi CMS for managing team photo galleries for the Dodgeball Champ
 - **teamName** (String, required): Full team name
 - **teamSlug** (UID, required): URL-friendly slug (auto-generated)
 - **countryCode** (String, required): Country code (e.g., "USA", "MEX", "GBR")
-- **galleryPhotos** (Media, multiple): Team photo gallery images
+- **albums** (Relation): Has many Albums
+
+### Album
+- **title** (String, required): Album title (e.g., "Training Session", "Tournament Finals")
+- **team** (Relation, required): Belongs to Team
+- **eventDate** (Date, optional): Date of the event
+- **location** (String, optional): Location of the event
+- **photographerCredit** (String, optional): Default photographer credit for all photos in album
+- **photos** (Component, repeatable): Collection of photos with individual metadata
+
+### Photo Item (Component)
+- **image** (Media, required): The photo file
+- **photographerCredit** (String, optional): Individual photo credit (overrides album credit)
+- **caption** (Text, optional): Photo caption or description
 
 ## Deployment
 
@@ -28,16 +41,29 @@ Once deployed, you'll have access to:
 - Admin panel: `https://your-project.strapiapp.com/admin`
 - API endpoint: `https://your-project.strapiapp.com/api/teams`
 
-### Setting Up Teams
+### Setting Up Content
 
 After deployment:
 1. Log in to the admin panel
-2. Go to Content Manager → Team
-3. Create entries for each team with their gallery photos
-4. Make sure to publish each entry
+2. **Create Teams**:
+   - Go to Content Manager → Team
+   - Create entries for all 8 teams
+   - Publish each team
+3. **Create Albums**:
+   - Go to Content Manager → Album
+   - Create a new album, select the team it belongs to
+   - Add title, date, location, and photographer credit
+   - Click "Add component" to add photos
+   - For each photo: upload image, optionally add individual photographer credit or caption
+   - Publish the album
+4. **Bulk Upload Workflow**:
+   - Create the album with metadata
+   - Click "Add component" for each photo you want to upload
+   - Upload multiple images at once in the media library
+   - Assign photographer credits afterward if different from album default
 
 ### API Permissions
 
 Don't forget to set public read permissions:
 1. Settings → Users & Permissions Plugin → Roles → Public
-2. Enable `find` and `findOne` for the Team content type
+2. Enable `find` and `findOne` for both **Team** and **Album** content types

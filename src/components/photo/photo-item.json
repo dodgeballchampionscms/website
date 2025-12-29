@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_photo_photo_items",
+  "info": {
+    "displayName": "Photo Item",
+    "description": "Individual photo with metadata"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "photographerCredit": {
+      "type": "string",
+      "required": false
+    },
+    "caption": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

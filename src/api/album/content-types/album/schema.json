@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "albums",
+  "info": {
+    "singularName": "album",
+    "pluralName": "albums",
+    "displayName": "Album",
+    "description": "Photo albums for teams"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "team": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "albums"
+    },
+    "eventDate": {
+      "type": "date",
+      "required": false
+    },
+    "location": {
+      "type": "string",
+      "required": false
+    },
+    "photographerCredit": {
+      "type": "string",
+      "required": false
+    },
+    "photos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "photo.photo-item"
+    }
+  }
+}
